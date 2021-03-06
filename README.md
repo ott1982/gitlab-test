@@ -43,7 +43,9 @@ Build​ with this structure:
 
 This service have to validate the Build bean and call another Rest Service.
 
-This app must be created with ​ SpringBoot​ .Data:
+This app must be created with ​ SpringBoot​ .
+
+Data:
 	- Enpoint RestService: jenkins.localhost.com
 ```
 
