@@ -1,6 +1,6 @@
-package com.example.demo.project.infrastructure;
+package com.example.demo.repository.impl;
 
-import com.example.demo.project.domain.BranchDao;
+import com.example.demo.repository.BranchDao;
 import org.springframework.stereotype.Repository;
 
 @Repository

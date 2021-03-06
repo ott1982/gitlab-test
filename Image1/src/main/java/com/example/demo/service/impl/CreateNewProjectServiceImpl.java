@@ -1,17 +1,28 @@
-package com.example.demo.project.domain;
+package com.example.demo.service.impl;
 
-public class CreateNewProjectUseCase {
+import com.example.demo.repository.BranchDao;
+import com.example.demo.repository.ProjectDao;
+import com.example.demo.repository.TagDao;
+import com.example.demo.service.CreateNewProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CreateNewProjectServiceImpl
+        implements CreateNewProjectService {
     private final ProjectDao projectDao;
     private final BranchDao branchDao;
     private final TagDao tagDao;
 
-    public CreateNewProjectUseCase(ProjectDao projectDao
+    @Autowired
+    public CreateNewProjectServiceImpl(ProjectDao projectDao
             , BranchDao branchDao, TagDao tagDao) {
         this.projectDao = projectDao;
         this.branchDao = branchDao;
         this.tagDao = tagDao;
     }
 
+    @Override
     public void createNewProject(String privateKey, String name) {
         projectDao.createProject(privateKey, name);
         branchDao.createBranch(privateKey, name, "master");

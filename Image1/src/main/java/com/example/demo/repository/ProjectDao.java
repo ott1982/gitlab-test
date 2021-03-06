@@ -1,4 +1,4 @@
-package com.example.demo.project.domain;
+package com.example.demo.repository;
 
 public interface ProjectDao {
 

@@ -1,9 +1,6 @@
-package com.example.demo.project.application;
+package com.example.demo.controller;
 
-import com.example.demo.project.domain.BranchDao;
-import com.example.demo.project.domain.CreateNewProjectUseCase;
-import com.example.demo.project.domain.ProjectDao;
-import com.example.demo.project.domain.TagDao;
+import com.example.demo.service.CreateNewProjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class ProjectApi {
     private static final Logger logger = LoggerFactory
             .getLogger(ProjectApi.class);
-    private final CreateNewProjectUseCase createNewProjectUseCase;
+    private final CreateNewProjectService createNewProjectService;
 
     @Autowired
-    public ProjectApi(ProjectDao projectDao, BranchDao branchDao
-            , TagDao tagDao) {
-        this.createNewProjectUseCase = new CreateNewProjectUseCase(
-                projectDao, branchDao, tagDao);
+    public ProjectApi(CreateNewProjectService createNewProjectService) {
+        this.createNewProjectService = createNewProjectService;
     }
 
     @PostMapping
