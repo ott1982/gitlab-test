@@ -4,7 +4,7 @@ import com.example.demo.entity.Project;
 
 import java.util.List;
 
-public class ProjectDto {
+public class ProjectDto extends CommonDto {
     private final String name;
     private final String owner;
     private final List<String> branches;

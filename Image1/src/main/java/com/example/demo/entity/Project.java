@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 import java.util.List;
 
-public class Project {
+public class Project extends CommonEntity {
     private final String name;
     private final String owner;
     private final List<String> tags;

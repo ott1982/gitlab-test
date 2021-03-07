@@ -22,18 +22,23 @@ import static java.lang.String.format;
 public class BuildRepositoryImpl extends CommonRepositoryImpl
         implements BuildDao {
     private final String endPoint;
+    private final HttpClient httpClient;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public BuildRepositoryImpl(@Value("${restservice.endpoint}") String endPoint) {
+    public BuildRepositoryImpl(@Value("${restservice.endpoint}") String endPoint
+            , HttpClient httpClient, ObjectMapper objectMapper) {
         this.endPoint = endPoint;
+        this.httpClient = httpClient;
+        this.objectMapper = objectMapper;
     }
 
     @Override
     public Build create(Build build) {
         HttpResponse<String> response;
         try {
-            response = HttpClient.newBuilder().build()
-                    .send(getRequest(build), HttpResponse.BodyHandlers.ofString());
+            response = httpClient.send(getRequest(build)
+                    , HttpResponse.BodyHandlers.ofString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
@@ -46,7 +51,7 @@ public class BuildRepositoryImpl extends CommonRepositoryImpl
         return build;
     }
 
-    private boolean isNotSuccessful(HttpResponse response) {
+    boolean isNotSuccessful(HttpResponse response) {
         return response.statusCode() / 100 != 2;
     }
 
@@ -54,7 +59,7 @@ public class BuildRepositoryImpl extends CommonRepositoryImpl
         try {
             return HttpRequest.newBuilder().uri(new URI(endPoint))
                     .headers("Content-Type", MediaType.APPLICATION_JSON.toString())
-                    .POST(HttpRequest.BodyPublishers.ofString(new ObjectMapper()
+                    .POST(HttpRequest.BodyPublishers.ofString(objectMapper
                             .writeValueAsString(build))).build();
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

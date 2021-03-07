@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateNewProjectServiceImpl
+public class CreateNewProjectServiceImpl extends CommonServiceImpl
         implements CreateNewProjectService {
     private final ProjectDao projectDao;
     private final BranchDao branchDao;

@@ -30,6 +30,7 @@ Data:
 ## Run
 
 * Docker.
+* Port 8080 available.
 
 ## Use
 

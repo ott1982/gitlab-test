@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class BuildServiceImpl extends CommonServiceImpl
         implements BuildService {
-
     private final BuildDao buildDao;
 
     @Autowired
