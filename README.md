@@ -1,10 +1,6 @@
-# gitlab-test
+# gitlab-test (TEST JAVA MICROSERVICES)
 
-```
-TEST JAVA MICROSERVICES
-=======================
-
-Objective:
+## Objective:
 
 The main objective of this test is to obtain two Docker images. Each one of them has to
 have an endpoint in Swagger.
@@ -15,8 +11,7 @@ invented).
 If the docker image don’t build don’t worry, the objective it’s check how do you work with
 dockerfile.
 
+## Content
 
-	
-
-```
-
+* [Image 1 (GitLab)](Image1).
+* [Image 2 (Jenkins)](Image2).
