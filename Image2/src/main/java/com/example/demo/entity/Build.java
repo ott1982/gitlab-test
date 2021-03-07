@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.dto.BuildDto;
 
-public class Build {
+public class Build extends CommonEntity {
     private final Number buildId;
     private final String name;
     private final String pathRepo;

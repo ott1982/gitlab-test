@@ -5,7 +5,8 @@ import com.example.demo.entity.Build;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
-public class BuildDto implements Serializable {
+public class BuildDto extends CommonDto
+        implements Serializable {
 
     @Pattern(regexp = "\\d+", message = "number")
     private String buildId;

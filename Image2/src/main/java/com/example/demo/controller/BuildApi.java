@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/build")
-public class BuildApi {
+public class BuildApi extends CommonController {
     private static Logger logger = LoggerFactory.getLogger(BuildApi.class);
     private final BuildService buildService;
 

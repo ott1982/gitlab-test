@@ -19,12 +19,12 @@ import java.net.http.HttpResponse;
 import static java.lang.String.format;
 
 @Repository
-public class BuildDaoImpl
+public class BuildRepositoryImpl extends CommonRepositoryImpl
         implements BuildDao {
     private final String endPoint;
 
     @Autowired
-    public BuildDaoImpl(@Value("${restservice.endpoint}") String endPoint) {
+    public BuildRepositoryImpl(@Value("${restservice.endpoint}") String endPoint) {
         this.endPoint = endPoint;
     }
 
@@ -39,11 +39,15 @@ public class BuildDaoImpl
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        if (response.statusCode() / 100 != 2) {
+        if (isNotSuccessful(response)) {
             throw new RuntimeException(format("create:: status code received: %s"
                     , response.statusCode()));
         }
         return build;
+    }
+
+    private boolean isNotSuccessful(HttpResponse response) {
+        return response.statusCode() / 100 != 2;
     }
 
     private HttpRequest getRequest(Build build) {
