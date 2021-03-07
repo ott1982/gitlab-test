@@ -28,6 +28,7 @@ public class ProjectApi extends CommonController {
             logger.debug("createProject:: privateToken: {}; projectName: {}"
                     , privateToken, projectName);
         }
+        createNewProjectService.createNewProject(privateToken, projectName);
         return new ResponseEntity<>("ok", HttpStatus.CREATED);
     }
 }
