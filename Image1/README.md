@@ -60,3 +60,4 @@ Swagger UI is configured into Rest API.
 # Notes
 
 * Callback to GitLab is not running.
+* Custom Exceptions should be thrown instead of RuntimeException.
